@@ -24,6 +24,8 @@ Clone the repository, fetch the required submodules, make the script executable 
 
 ```
   git clone https://github.com/miroslavvidovic/findmovie
+
+  cd findmovie
   
   git submodule init
   
@@ -46,7 +48,7 @@ If you wish to change the output format edit the findmovie.mo file.
 ## Built with
 
 - [mo](https://github.com/tests-always-included/mo) - Mustache templates in bash
-- [bash-spinner](https://github.com/tlatsas/bash-spinner) - Small progress spinner
+- [shell-progressbar](https://github.com/haikieu/shell-progressbar) - progress bar for Shell Script
 
 ## Contributing
 

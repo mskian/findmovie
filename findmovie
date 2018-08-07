@@ -5,11 +5,11 @@
 #   author:    Miroslav Vidovic (miroslav-vidovic@hotmail.com)
 #   file:      findmovie
 #   created:   08.07.2018.-20:42:30
-#   version:   1.0
+#   version:   1.1
 # -----------------------------------------------------------------------------
 # Requirements:
 #   curl, mo (https://github.com/tests-always-included/mo),
-#   bash-spinner (https://github.com/tlatsas/bash-spinner)
+#   Shell progress bar (https://github.com/haikieu/shell-progressbar)
 # Description:
 #   Get movie information from imdb (www.imdb.com) by web scraping
 # -----------------------------------------------------------------------------
@@ -17,7 +17,7 @@
 
 SCRIPTNAME=$(basename "$0")
 
-source ./bash-spinner/spinner.sh
+source ./progressbar.sh
 
 help_message(){
   echo "
@@ -38,6 +38,7 @@ get_id(){
 
   ## If no movie was found
   if [[ -z $movie_id ]]; then
+      echo -e "\\n"
       echo -e "Sorry: couldn't find the movie.\nIn case of a typo check:\n"
       echo "$1" | aspell -a
       exit 1
@@ -103,19 +104,39 @@ get_movie_data(){
 main(){
   # Check the number of input arguments
   if [[ $# -lt 1 ]]; then
-    echo "No input provided."
+    echo -e "\\n"
+    echo -e "No input provided."
     help_message
     exit 1
   elif [[ $# -gt 1 ]]; then
+    echo -e "\\n"
     echo "Too many arguments."
     help_message
     exit 1
   fi
 
-  start_spinner "fetching data "
-  get_id "$@"
-  get_movie_data
-  stop_spinner $?
+echo "Fetching Movie Data"
+
+#Do some tasks
+progress 10 Initialize
+#Do some tasks
+progress 20 "Start Searching"
+#Do some tasks
+progress 40 "Find the Movie"
+#Do some tasks
+progress 60 "Processing..."
+#Do some tasks
+progress 80 "Processing..."
+#Do some tasks
+progress 90 "Processing..."
+#Do some tasks
+progress 100 "Done        "
+
+get_id "$@"
+get_movie_data
+
+echo
+ 
 }
 
 main "$@"

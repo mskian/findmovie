@@ -11,4 +11,3 @@ Release Date:       {{DATE}}
 Content Rating:     {{CONTENTR}}
 Directed By:        {{DIRECTOR}}
 Actors:             {{ACTORS}}
-
